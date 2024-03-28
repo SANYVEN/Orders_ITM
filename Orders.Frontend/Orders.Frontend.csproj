@@ -16,10 +16,4 @@
     <ProjectReference Include="..\Orders.Shared\Orders.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="Pages\Categories\CategoryForm.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-  </ItemGroup>
-
 </Project>

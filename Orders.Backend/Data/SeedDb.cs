@@ -22,12 +22,71 @@ namespace Orders.Backend.Data
         {
             if (!_context.Countries.Any())
             {
-                _context.Countries.Add(new Country { Name = "Colombia" });
-                _context.Countries.Add(new Country { Name = "Estados Unidos" });
+                _context.Countries.Add(new Country
+                {
+                    Name = "Colombia",
+                    States =
+                [
+                new State()
+                {
+                    Name = "Antioquia",
+                    Cities = [
+                        new() { Name = "Medellín" },
+                        new() { Name = "Itagüí" },
+                        new() { Name = "Envigado" },
+                        new() { Name = "Bello" },
+                        new() { Name = "Rionegro" },
+                    ]
+                },
+                new State()
+                {
+                    Name = "Cundinamarca",
+                    Cities = [
+                        new() { Name = "Chia" },
+                        new() { Name = "Sibate" },
+                        new() { Name = "Girardot" },
+                        new() { Name = "Facatativa" },
+                        new() { Name = "Funsa" },
+                    ]
+                },
+            ]
+                });
+                _context.Countries.Add(new Country
+                {
+                    Name = "Estados Unidos",
+                    States = 
+                [
+                new State()
+                {
+                    Name = "Florida",
+                    Cities =
+                    [
+                        new() { Name = "Orlando" },
+                        new() { Name = "Miami" },
+                        new() { Name = "Tampa" },
+                        new() { Name = "Fort Lauderdale" },
+                        new() { Name = "Key West" },
+                    ]
+                },
+                new State()
+                {
+                    Name = "Texas",
+                    Cities =
+                    [
+                        new() { Name = "Houston" },
+                        new() { Name = "San Antonio" },
+                        new() { Name = "Dallas" },
+                        new() { Name = "Austin" },
+                        new() { Name = "El Paso" },
+                    ]
+                },
+            ]
+                });
             }
 
             await _context.SaveChangesAsync();
         }
+
 
         private async Task CheckCategoriesAsync()
         {

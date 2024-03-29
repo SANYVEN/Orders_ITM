@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace Orders.Frontend.Repositories
 {
-    public class Repository : IRepository
+    public class Repository: IRepository
     {
         private readonly HttpClient _httpClient;
 

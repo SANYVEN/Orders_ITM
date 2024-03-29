@@ -18,8 +18,9 @@ namespace Orders.Backend.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>().HasIndex(c => c.Name).IsUnique();
             modelBuilder.Entity<Country>().HasIndex(c => c.Name).IsUnique();
-            modelBuilder.Entity<State>().HasIndex(s => new { s.CountryId, s.Name }).IsUnique();
             modelBuilder.Entity<City>().HasIndex(c => new { c.StateId, c.Name }).IsUnique();
+            modelBuilder.Entity<State>().HasIndex(s => new { s.CountryId, s.Name }).IsUnique();
+         
             DisableCascadingDelete(modelBuilder);
         }
         private void DisableCascadingDelete(ModelBuilder modelBuilder)

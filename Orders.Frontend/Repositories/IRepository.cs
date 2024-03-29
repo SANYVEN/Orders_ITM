@@ -14,7 +14,7 @@
 
         Task<HttpResponseWrapper<TActionResponse>> PutAsync<T, TActionResponse>(string url, T model);
 
-
     }
 }
+
 

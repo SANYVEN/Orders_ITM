@@ -15,7 +15,7 @@ namespace Orders.Frontend.Pages.Countries
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
         [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
 
-     
+
         private async Task CreateAsync()
         {
             var responseHttp = await Repository.PostAsync("/api/countries", country);

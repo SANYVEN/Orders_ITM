@@ -13,7 +13,7 @@ else
     </div>
 
     <h4>Estados/Departamentos</h4>
-    <GenericList MyList="states">
+    <GenericList MyList="states!">
         <Body>
             <Pagination CurrentPage="currentPage"
                         TotalPages="totalPages"
@@ -29,7 +29,7 @@ else
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var state in states)
+                    @foreach (var state in states!)
                     {
                         <tr>
                             <td>

@@ -21,7 +21,7 @@ namespace Orders.Backend.Repositories.Implementations
         {
             var states = await _context.States
                 .OrderBy(x => x.Name)
-                .Include(s => s.Cities)
+               // .Include(s => s.Cities)
                 .ToListAsync();
             return new ActionResponse<IEnumerable<State>>
             {
@@ -78,6 +78,7 @@ namespace Orders.Backend.Repositories.Implementations
         public override async Task<ActionResponse<State>> GetAsync(int id)
         {
             var state = await _context.States
+                
                  .Include(s => s.Cities)
                  .FirstOrDefaultAsync(s => s.Id == id);
 

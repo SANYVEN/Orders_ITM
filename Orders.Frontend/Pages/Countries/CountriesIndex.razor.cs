@@ -34,11 +34,6 @@ namespace Orders.Frontend.Pages.Countries
 
         private async Task LoadAsync(int page = 1)
         {
-            if (!string.IsNullOrWhiteSpace(Page))
-            {
-                page = Convert.ToInt32(Page);
-            }
-
             var ok = await LoadListAsync(page);
             if (ok)
             {
@@ -48,11 +43,12 @@ namespace Orders.Frontend.Pages.Countries
 
         private async Task<bool> LoadListAsync(int page)
         {
-            var url = $"api/countries?page={page}";
+           /* var url = $"api/countries?page={page}";
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"&filter={Filter}";
             }
+           */
 
             var responseHttp = await Repository.GetAsync<List<Country>>($"api/countries?page={page}");
             if (responseHttp.Error)
@@ -67,13 +63,14 @@ namespace Orders.Frontend.Pages.Countries
 
         private async Task LoadPagesAsync()
         {
-            var url = "api/countries/totalPages";
+           /* var url = "api/countries/totalPages";
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"?filter={Filter}";
             }
+           */
 
-            var responseHttp = await Repository.GetAsync<int>(url);
+            var responseHttp = await Repository.GetAsync<int>("api/countries/totalPages");
             if (responseHttp.Error)
             {
                 var message = await responseHttp.GetErrorMessageAsync();
@@ -97,7 +94,6 @@ namespace Orders.Frontend.Pages.Countries
             await LoadAsync(page);
             await SelectedPageAsync(page);
         }
-
 
 
         private async Task LoadAsync()

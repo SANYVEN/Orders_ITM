@@ -34,8 +34,8 @@ namespace Orders.Backend.Repositories.Implementations
         public virtual async Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination)
         {
             var queryable = _entity.AsQueryable();
-            double count = await queryable.CountAsync();
-            int totalPages = (int)Math.Ceiling(count / pagination.RecordsNumber);
+            var count = await queryable.CountAsync();
+            int totalPages = (int)Math.Ceiling((double)count / pagination.RecordsNumber);
             return new ActionResponse<int>
             {
                 WasSuccess = true,

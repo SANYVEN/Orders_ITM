@@ -23,6 +23,7 @@ namespace Orders.Frontend.Pages.Countries
         [Parameter, SupplyParameterFromQuery] public string Filter { get; set; } = string.Empty;
         [Parameter] public int CountryId { get; set; }
 
+
         protected override async Task OnInitializedAsync()
         {
             await LoadAsync();
@@ -93,21 +94,6 @@ namespace Orders.Frontend.Pages.Countries
             states = responseHttp.Response;
             return true;
         }
-
-        private async Task CleanFilterAsync()
-        {
-            Filter = string.Empty;
-            await ApplyFilterAsync();
-        }
-
-        private async Task ApplyFilterAsync()
-        {
-            int page = 1;
-            await LoadAsync(page);
-            await SelectedPageAsync(page);
-        }
-
-
         private async Task<bool> LoadCountryAsync()
         {
             var responseHttp = await Repository.GetAsync<Country>($"/api/countries/{CountryId}");
@@ -126,26 +112,25 @@ namespace Orders.Frontend.Pages.Countries
             country = responseHttp.Response;
             return true;
         }
+
+        private async Task CleanFilterAsync()
+        {
+            Filter = string.Empty;
+            await ApplyFilterAsync();
+        }
+
+        private async Task ApplyFilterAsync()
+        {
+            int page = 1;
+            await LoadAsync(page);
+            await SelectedPageAsync(page);
+        }
+
+
+
         // Aqui termina la paginación
 
-        private async Task LoadAsync()
-        {
-            var responseHttp = await Repository.GetAsync<Country>($"/api/countries/{CountryId}");
-            if (responseHttp.Error)
-            {
-                if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
-                {
-                    NavigationManager.NavigateTo("/countries");
-                    return;
-                }
-
-                var message = await responseHttp.GetErrorMessageAsync();
-                await SweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
-                return;
-            }
-
-            country = responseHttp.Response;
-        }
+       
 
         private async Task DeleteAsync(State state)
         {

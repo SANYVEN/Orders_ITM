@@ -33,11 +33,11 @@ namespace Orders.Frontend.Pages.Categories
 
         private async Task LoadAsync(int page = 1)
         {
-           /* if (!string.IsNullOrWhiteSpace(Page))
+            if (!string.IsNullOrWhiteSpace(Page))
             {
                 page = Convert.ToInt32(Page);
             }
-           */
+           
             var ok = await LoadListAsync(page);
             if (ok)
             {
@@ -47,13 +47,13 @@ namespace Orders.Frontend.Pages.Categories
 
         private async Task<bool> LoadListAsync(int page)
         {
-           /* var url = $"api/categories/?page={page}";
+            var url = $"api/categories/?page={page}";
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"&filter={Filter}";
             }
-           */
-            var responseHttp = await Repository.GetAsync<List<Category>>($"api/categories/?page={page}");
+           
+            var responseHttp = await Repository.GetAsync<List<Category>>(url);
             if (responseHttp.Error)
             {
                 var message = await responseHttp.GetErrorMessageAsync();
@@ -66,13 +66,13 @@ namespace Orders.Frontend.Pages.Categories
 
         private async Task LoadPagesAsync()
         {
-           /* var url = $"api/categories/totalPages";
+            var url = $"api/categories/totalPages";
             if (!string.IsNullOrEmpty(Filter))
             {
                 url += $"?filter={Filter}";
             }
-             */
-            var responseHttp = await Repository.GetAsync<int>($"api/categories/totalPages");
+             
+            var responseHttp = await Repository.GetAsync<int>(url);
             if (responseHttp.Error)
             {
                 var message = await responseHttp.GetErrorMessageAsync();

@@ -16,6 +16,10 @@ namespace Orders.Backend.Repositories.Interfaces
 
         Task<bool> IsUserInRoleAsync(User user, string roleName);
 
+        Task<SignInResult> LoginAsync(LoginDTO model);
+
+        Task LogoutAsync();
+
     }
 }
 

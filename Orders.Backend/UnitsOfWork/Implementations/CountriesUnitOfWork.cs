@@ -23,7 +23,7 @@ namespace Orders.Backend.UnitsOfWork.Implementations
 
       
 
-        //public override async Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination) => await _countriesRepository.GetTotalPagesAsync(pagination);
+        public override async Task<ActionResponse<int>> GetTotalPagesAsync(PaginationDTO pagination) => await _countriesRepository.GetTotalPagesAsync(pagination);
     }
 }
 

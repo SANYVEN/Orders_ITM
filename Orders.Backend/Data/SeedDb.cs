@@ -25,7 +25,7 @@ namespace Orders.Backend.Data
             await CheckCountriesAsync();
             await CheckCatregoriesAsync();
             await CheckRolesAsync();
-            await CheckUserAsync("1010", "Omar", "Moreno", "omarmoreno@yopmail.com", "350 447 67 67", "Tabogo City", UserType.Admin);
+            await CheckUserAsync("1010", "Omar", "Moreno", "papos21444@gmail.com", "350 447 67 67", "Tabogo City", UserType.Admin);
         }
 
         private async Task CheckRolesAsync()
